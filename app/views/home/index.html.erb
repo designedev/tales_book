@@ -1,0 +1,46 @@
+<header> TALES DB BOOK </header>
+
+<div>
+	<label>SEARCH:</label>
+	<input type = "text" ng-model = "search.NAME" placeholder = "SEARCH HERE" kr-input ng-change="alertChange(search.NAME)">
+</div>
+<div ng-controller = "ItemsCtrl">
+	<table>
+		<thead>
+			<tr>
+				<th>타입</th>
+				<th>이름</th>
+				<th>요구치</th>
+				<th>찌르기</th>
+				<th>베기</th>
+				<th>물리방어</th>
+				<th>마법공격</th>
+				<th>마법방어</th>
+				<th>명중</th>
+				<th>회피</th>
+				<th>민첩</th>
+				<th>크리티컬</th>
+				<th>딜레이</th>
+				<th>합성횟수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in items | filter:search:strict">
+				<td>{{item.TYPE}}</td>
+				<td>{{item.NAME}}</td>
+				<td>{{item.REQIREMENT}}</td>
+				<td>{{item.STAB}}</td>
+				<td>{{item.HACK}}</td>
+				<td>{{item.DEFENCE}}</td>
+				<td>{{item.MATTACK}}</td>
+				<td>{{item.MDEFENCE}}</td>
+				<td>{{item.ACCURACY}}</td>
+				<td>{{item.AGILITY}}</td>
+				<td>{{item.DEXTERITY}}</td>
+				<td>{{item.CRITICAL}}</td>
+				<td>{{item.DELAY}}</td>
+				<td>{{item.COMPOSE}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
