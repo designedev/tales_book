@@ -1,46 +1,55 @@
-<header> TALES DB BOOK </header>
-
-<div>
-	<label>SEARCH:</label>
-	<input type = "text" ng-model = "search.NAME" placeholder = "SEARCH HERE" kr-input ng-change="alertChange(search.NAME)">
-</div>
-<div ng-controller = "ItemsCtrl">
-	<table>
-		<thead>
-			<tr>
-				<th>타입</th>
-				<th>이름</th>
-				<th>요구치</th>
-				<th>찌르기</th>
-				<th>베기</th>
-				<th>물리방어</th>
-				<th>마법공격</th>
-				<th>마법방어</th>
-				<th>명중</th>
-				<th>회피</th>
-				<th>민첩</th>
-				<th>크리티컬</th>
-				<th>딜레이</th>
-				<th>합성횟수</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="item in items | filter:search:strict">
-				<td>{{item.TYPE}}</td>
-				<td>{{item.NAME}}</td>
-				<td>{{item.REQIREMENT}}</td>
-				<td>{{item.STAB}}</td>
-				<td>{{item.HACK}}</td>
-				<td>{{item.DEFENCE}}</td>
-				<td>{{item.MATTACK}}</td>
-				<td>{{item.MDEFENCE}}</td>
-				<td>{{item.ACCURACY}}</td>
-				<td>{{item.AGILITY}}</td>
-				<td>{{item.DEXTERITY}}</td>
-				<td>{{item.CRITICAL}}</td>
-				<td>{{item.DELAY}}</td>
-				<td>{{item.COMPOSE}}</td>
-			</tr>
-		</tbody>
-	</table>
+<div class="row">
+	<div class="col-md-12" align="center">
+			<h1><%= image_tag("book.png", size:"30", :alt => "logo") %> TALESBOOK. <small>talesweaver item info finder</small></h1>
+	</div>
+	<div class="col-md-12" ng-controller = "ItemsAjaxCtrl">
+		<div class="form-group" align="center">
+			<label for = "keywordText">검색어 입력 </label>
+			<input class="input" id="keywordText" ng-keyup="$event.keyCode == 13 && search()"  ng-model="keyword" kr-input />
+			<button class="btn btn-primary btn-xs" ng-click="search()">find</button>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr class="info">
+					<th>타입</th>
+					<th>이름</th>
+					<th>요구치</th>
+					<th>찌르기</th>
+					<th>베기</th>
+					<th>물리방어</th>
+					<th>마법공격</th>
+					<th>마법방어</th>
+					<th>명중</th>
+					<th>회피</th>
+					<th>민첩</th>
+					<th>크리티컬</th>
+					<th>딜레이</th>
+					<th>합성횟수</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-show="!items.length">
+					<td align="center" colspan="14">
+							<p class="bg-primary"> 검색어를 입력해주세요 </p>
+					</td>
+				</tr>
+				<tr ng-repeat="item in items">
+					<td align="center">{{item.TYPE}}</td>
+					<td align="center">{{item.NAME}}</td>
+					<td align="center">{{item.REQIREMENT}}</td>
+					<td align="center">{{item.STAB}}</td>
+					<td align="center">{{item.HACK}}</td>
+					<td align="center">{{item.DEFENCE}}</td>
+					<td align="center">{{item.MATTACK}}</td>
+					<td align="center">{{item.MDEFENCE}}</td>
+					<td align="center">{{item.ACCURACY}}</td>
+					<td align="center">{{item.AGILITY}}</td>
+					<td align="center">{{item.DEXTERITY}}</td>
+					<td align="center">{{item.CRITICAL}}</td>
+					<td align="center">{{item.DELAY}}</td>
+					<td align="center">{{item.COMPOSE}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
